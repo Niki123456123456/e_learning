@@ -1,9 +1,10 @@
 <script lang="ts">
   import CodeMirror from "svelte-codemirror-editor";
-  import { oneDark } from "@codemirror/theme-one-dark";
+  import { color, oneDark } from "@codemirror/theme-one-dark";
   import { basicSetup } from "codemirror";
   import { autocompletion, completeFromList, type Completion } from "@codemirror/autocomplete";
   import Katex from "svelte-katex";
+  import {gutter} from "@codemirror/view"
 
   function completion(insert : string, label :string) : Completion{
     return {
@@ -46,6 +47,20 @@
         completion("\\lnot", "not"),
         completion("\\tilde{?}", "tilde"),
         completion("\\bar{?}", "bar"),
+        completion("\\space", "space"),
+        completion("\\cdot", "dot"),
+        completion("\\binom{?}{}", "binom"),
+        completion("\\set{?}","set"),
+        completion("\\textcolor{?}{}", "color"),
+        completion("\\infty","infinity"),
+        completion("\\N","N"), // natürliche Zahlen 0, 1, 8
+        completion("\\Z","Z"), // ganze Zahlen -1
+        completion("\\mathbb{Q}","Q"), // rationale Zahlen 0.6
+        completion("\\mathbb{I}","I"), // irrationale Zahlen \sqrt{2}
+        completion("\\R","R"), // reelle Zahlen
+        completion("\\mathbb{C}","C"), // komplexe Zahlen
+
+
       ]),
     ],
   });
@@ -56,7 +71,9 @@
 <main>
   <CodeMirror
     bind:value
-    extensions={[basicSetup, test2]}
+    extensions={[basicSetup, test2, gutter({
+      lineMarker: null,
+    })]}
     theme={oneDark}
     styles={{
       "&": {
