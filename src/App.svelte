@@ -1,9 +1,7 @@
 <script lang="ts">
-  import KatexInput from "./lib/KatexInput.svelte"
-  import SelectQuestion from "./lib/SelectQuestion.svelte";
+    import Question from "./lib/Question.svelte";
 </script>
 
 <main>
-  <SelectQuestion/>
-  <KatexInput></KatexInput>
+  <Question/>
 </main>

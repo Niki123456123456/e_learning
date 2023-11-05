@@ -1,37 +1,15 @@
 <script lang="ts">
     import Katex from "svelte-katex";
-    let all_answers_correct = undefined;
-    let qa = {
-        question:
-            "\\text{Was ist} \\space \\textcolor{red}{a+a} \\space \\text{?}",
-        answers: [
-            {
-                text: "a",
-                is_correct: true,
-                is_selected: false,
-            },
-            {
-                text: "0",
-                is_correct: false,
-                is_selected: false,
-            },
-            {
-                text: "1",
-                is_correct: false,
-                is_selected: false,
-            },
-        ],
-    };
+    export let all_answers_correct;
+    export let qa;
 
-    function check_answers() {
+    export function check_answers() {
         for (let i = 0; i < qa.answers.length; i++) {
             if (qa.answers[i].is_correct != qa.answers[i].is_selected) {
-                all_answers_correct = false;
-                return;
+                return false;
             }
         }
-        all_answers_correct = true;
-        console.log("test");
+        return true;
     }
 </script>
 
@@ -58,7 +36,6 @@
         <Katex displayMode>{answer.text}</Katex>
     </div>
 {/each}
-<button on:click={check_answers}>Prüfen</button>
 
 <style>
     .container {
