@@ -15,7 +15,7 @@
     async function get_next_question() {
 
         // http://167.71.46.2:3000/ http://localhost:8080/
-        const response = await fetch("http://167.71.46.2:3000/");
+        const response = await fetch("https://elearning-9ynjh.ondigitalocean.app/");
         qa = await response.json();
         all_answers_correct = undefined;
         if (clear_func) {
