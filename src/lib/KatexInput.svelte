@@ -71,7 +71,7 @@
         ],
     });
 
-    let value = "";
+    export let value;
 </script>
 
 <CodeMirror
